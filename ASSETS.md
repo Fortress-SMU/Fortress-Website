@@ -12,3 +12,9 @@ All raster assets were copied byte-for-byte from existing local files on 2026-10
 The first three paths are relative to the existing `C:/UnrealEngine/Perforce` workspace. Their sources remain unchanged. The small Steam icon is from the existing SteamCMD client under the game's `Saved/SteamReleasePrep_20261010/BuildUpload_0524` folder. Steam and the Steam logo are trademarks of Valve Corporation.
 
 `dist/assets/favicon.svg` and the decorative line icons were authored as simple SVG markup for this draft. Placeholder portraits do not depict actual team members or confirmed game characters. The panoramic art is a pre-existing marketing illustration, not a screenshot or trailer still.
+
+## Fonts added for the mythic design revision
+
+- `dist/assets/fonts/PretendardVariable.woff2`: unmodified [Pretendard v1.3.9](https://github.com/orioncactus/pretendard/tree/v1.3.9/packages/pretendard/dist/web/variable/woff2), by Kil Hyung-jin. Its original SIL Open Font License is included as `Pretendard-LICENSE.txt`.
+- `dist/assets/fonts/Cinzel-Variable.ttf`: unmodified [Cinzel from Google Fonts](https://github.com/google/fonts/tree/main/ofl/cinzel). Its original SIL Open Font License is included as `Cinzel-OFL.txt`.
+- Both fonts are served locally. No external font requests or new raster artwork were introduced. The celestial rings and ambient particles are CSS/SVG decoration; team cards now use names, roles, and GitHub links instead of portrait placeholders.

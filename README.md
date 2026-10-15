@@ -32,6 +32,14 @@ npm run dev
 | 강민우 | 보스 우태 개발, 적 캐릭터 개발 | Wootae Boss Development, Enemy Character Development |
 | 최윤서 | 맵 디자인, 적 캐릭터 개발 | Map Design, Enemy Character Development |
 
+역할 아래 GitHub 계정을 순서대로 [@nvunwoo](https://github.com/nvunwoo), [@JoJunHwan](https://github.com/JoJunHwan), [@DrugK](https://github.com/DrugK), [@YunseoC](https://github.com/YunseoC)에 연결한다. 새 탭으로 열며 `noopener noreferrer`를 적용한다.
+
+## 디자인과 시각 효과
+
+검정·암보라·청동/금빛·탁한 흰색을 중심으로 천체 궤도 문양, 영화 같은 영상 프레임과 큰 여백을 사용한다. 영문 메뉴/제목 등의 포인트는 Cinzel, FORTRESS 팀 소개 전체는 Pretendard Variable을 사용한다. 폰트와 OFL 라이선스는 `dist/assets/fonts/`에 포함해 외부 폰트 CDN 없이 제공한다.
+
+느린 안개/입자, 메뉴 진입, 카드 광원과 hover 효과를 추가했다. 상단 효과 버튼으로 끌 수 있으며 선택을 저장한다. 기기의 `prefers-reduced-motion`이 켜지면 효과를 비활성화하고, 백그라운드 탭의 반복 움직임은 정지한다. 효과를 꺼도 모든 콘텐츠와 링크는 사용할 수 있다.
+
 ## 언어 선택과 국가 판별
 
 우선순위는 **직접 선택하여 저장한 언어 → 한국(KR)으로 확인된 접속 국가 → 영어**이다.

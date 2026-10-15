@@ -12,7 +12,7 @@ const port = portArg ? Number(portArg.split("=")[1]) : 4173;
 const simulatedCountry = countryArg?.split("=")[1] ?? "";
 if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error("Invalid port");
 if (simulatedCountry && !/^[A-Z]{2}$/.test(simulatedCountry)) throw new Error("Use a two-letter country code such as KR");
-const mime = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".mp4": "video/mp4", ".webm": "video/webm" };
+const mime = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".woff2": "font/woff2", ".ttf": "font/ttf", ".mp4": "video/mp4", ".webm": "video/webm" };
 
 const server = createServer(async (req, res) => {
   try {
