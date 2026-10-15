@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100e13">
+  <meta name="description" content="The Sky Breaker · FORTRESS">
+  <title>The Sky Breaker | FORTRESS</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="settings.js"></script>
+  <script defer src="language.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-ko="본문으로 이동" data-en="Skip to content">Skip to content</a>
+  <div class="site-shell">
+    <header class="masthead">
+      <div class="topbar">
+        <a class="studio-mark" href="#home" aria-label="FORTRESS HOME">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 27V8h5v5h4V5h4v8h4V8h5v19H5Z M13 27v-8h6v8"/></svg>
+          <span>FORTRESS</span>
+        </a>
+        <div class="language-switch" role="group" aria-label="Language / 언어">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><ellipse cx="12" cy="12" rx="3.5" ry="8"/><path d="M4 12h16"/></svg>
+          <button type="button" data-language="en" aria-pressed="true" lang="en">EN</button>
+          <span class="language-divider" aria-hidden="true"></span>
+          <button type="button" data-language="ko" aria-pressed="false" lang="ko">한국어</button>
+        </div>
+      </div>
+      <div class="brand-lockup">
+        <h1>
+          <img id="game-logo" class="game-logo" src="assets/logo-en.png" width="2172" height="724" alt="The Sky Breaker">
+          <span id="brand-subtitle" class="brand-subtitle" hidden>THE SKY BREAKER</span>
+        </h1>
+        <span class="brand-rule" aria-hidden="true"><i></i></span>
+      </div>
+      <nav class="main-nav" aria-label="Main menu">
+        <div role="tablist" aria-label="Game website" aria-orientation="horizontal">
+          <button type="button" role="tab" id="tab-home" aria-controls="panel-home" aria-selected="true" tabindex="0" data-tab="home"><span class="nav-index">01</span>HOME</button>
+          <button type="button" role="tab" id="tab-game" aria-controls="panel-game" aria-selected="false" tabindex="-1" data-tab="game"><span class="nav-index">02</span>GAME</button>
+          <button type="button" role="tab" id="tab-development" aria-controls="panel-development" aria-selected="false" tabindex="-1" data-tab="development"><span class="nav-index">03</span>DEVELOPMENT</button>
+          <button type="button" role="tab" id="tab-fortress" aria-controls="panel-fortress" aria-selected="false" tabindex="-1" data-tab="fortress"><span class="nav-index">04</span>FORTRESS</button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="tab-panel home-panel" id="panel-home" role="tabpanel" aria-labelledby="tab-home" tabindex="0">
+        <div class="section-heading"><span class="eyebrow">01 <span class="small-rule"></span> HOME</span><span class="section-caption" data-placeholder="HOME-001">HOME-001: Temporary content.</span></div>
+        <div class="trailer-frame">
+          <img class="trailer-art" src="assets/key-art.png" width="2203" height="714" alt="" fetchpriority="high">
+          <div class="trailer-shade"></div>
+          <div class="trailer-corner top-left" aria-hidden="true"></div><div class="trailer-corner bottom-right" aria-hidden="true"></div>
+          <span class="media-label"><i></i>TRAILER</span>
+          <button class="trailer-trigger" type="button" id="open-trailer" aria-label="Open trailer / 트레일러 열기">
+            <span class="play-ring"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7V5Z"/></svg></span>
+            <span class="trailer-button-copy" data-placeholder="HOME-002">HOME-002: Temporary content.</span>
+          </button>
+          <div class="trailer-bottom"><span class="trailer-title" data-game-title>The Sky Breaker</span><span class="media-number">01 / 01</span></div>
+        </div>
+        <div class="home-bottom">
+          <p class="home-note" data-placeholder="HOME-003">HOME-003: Temporary content.</p>
+          <a class="steam-link" id="steam-link" href="https://store.steampowered.com/app/4838950/" target="_blank" rel="noopener noreferrer" aria-label="The Sky Breaker on Steam (opens a new tab)">
+            <img src="assets/steam-logo.png" alt="" width="98" height="96">
+            <span class="steam-wordmark">STEAM</span>
+            <svg class="external-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg>
+          </a>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="panel-game" role="tabpanel" aria-labelledby="tab-game" tabindex="0" hidden>
+        <div class="section-heading"><span class="eyebrow">02 <span class="small-rule"></span> GAME</span><span class="section-caption" data-placeholder="GAME-001">GAME-001: Temporary content.</span></div>
+        <div class="story-layout">
+          <div class="story-copy"><span class="eyebrow muted" data-en="THE STORY" data-ko="게임 스토리">THE STORY</span><h2 data-placeholder="GAME-002">GAME-002: Temporary content.</h2><span class="short-line" aria-hidden="true"></span><p data-placeholder="GAME-003">GAME-003: Temporary content.</p></div>
+          <div class="story-art"><img src="assets/key-art.png" alt="" loading="lazy"><span class="art-index" aria-hidden="true">I.</span></div>
+        </div>
+        <div class="subsection-heading"><h3 data-en="CHARACTERS" data-ko="등장 캐릭터">CHARACTERS</h3><span class="long-rule"></span><span>02</span></div>
+        <div class="character-grid">
+          <article class="character"><div class="character-image" aria-hidden="true"><svg viewBox="0 0 80 100"><circle cx="40" cy="32" r="15"/><path d="M12 90v-8c0-21 56-21 56 0v8"/></svg><span>01</span></div><div><span class="eyebrow muted">CHARACTER 01</span><h4 data-placeholder="GAME-004">GAME-004: Temporary content.</h4><p data-placeholder="GAME-005">GAME-005: Temporary content.</p></div></article>
+          <article class="character"><div class="character-image alternate" aria-hidden="true"><svg viewBox="0 0 80 100"><circle cx="40" cy="32" r="15"/><path d="M12 90v-8c0-21 56-21 56 0v8"/></svg><span>02</span></div><div><span class="eyebrow muted">CHARACTER 02</span><h4 data-placeholder="GAME-006">GAME-006: Temporary content.</h4><p data-placeholder="GAME-007">GAME-007: Temporary content.</p></div></article>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="panel-development" role="tabpanel" aria-labelledby="tab-development" tabindex="0" hidden>
+        <div class="section-heading"><span class="eyebrow">03 <span class="small-rule"></span> DEVELOPMENT</span><span class="section-caption" data-placeholder="DEV-001">DEV-001: Temporary content.</span></div>
+        <div class="development-intro"><span class="eyebrow muted" data-en="BEHIND THE GAME" data-ko="게임 개발 이야기">BEHIND THE GAME</span><h2 data-placeholder="DEV-002">DEV-002: Temporary content.</h2><p data-placeholder="DEV-003">DEV-003: Temporary content.</p></div>
+        <div class="development-rows">
+          <article class="development-row"><span class="row-number">01</span><div class="development-category"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="m20 4 15 8v16l-15 8-15-8V12l15-8Zm0 16L5 12m15 8 15-8M20 20v16"/></svg><h3 data-en="ENGINE" data-ko="엔진">ENGINE</h3></div><div><h4 data-placeholder="DEV-004">DEV-004: Temporary content.</h4><p data-placeholder="DEV-005">DEV-005: Temporary content.</p></div></article>
+          <article class="development-row"><span class="row-number">02</span><div class="development-category"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="5" width="12" height="12"/><rect x="24" y="23" width="12" height="12"/><path d="M16 11h14v12M10 17v12h14"/></svg><h3 data-en="COLLABORATION" data-ko="협업 툴">COLLABORATION</h3></div><div><h4 data-placeholder="DEV-006">DEV-006: Temporary content.</h4><p data-placeholder="DEV-007">DEV-007: Temporary content.</p></div></article>
+          <article class="development-row"><span class="row-number">03</span><div class="development-category"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="m14 8-10 12 10 12m12-24 10 12-10 12M23 5l-6 30"/></svg><h3 data-en="GAMEPLAY SYSTEMS" data-ko="게임 내 구현 방식">GAMEPLAY SYSTEMS</h3></div><div><h4 data-placeholder="DEV-008">DEV-008: Temporary content.</h4><p data-placeholder="DEV-009">DEV-009: Temporary content.</p></div></article>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="panel-fortress" role="tabpanel" aria-labelledby="tab-fortress" tabindex="0" hidden>
+        <div class="section-heading"><span class="eyebrow">04 <span class="small-rule"></span> FORTRESS</span><span class="section-caption" data-placeholder="FORTRESS-001">FORTRESS-001: Temporary content.</span></div>
+        <div class="team-intro"><div><span class="eyebrow muted" data-en="THE TEAM" data-ko="개발팀 소개">THE TEAM</span><h2>FORTRESS<span class="title-period">.</span></h2></div><div class="team-intro-copy"><p data-placeholder="FORTRESS-002">FORTRESS-002: Temporary content.</p><p data-placeholder="FORTRESS-003">FORTRESS-003: Temporary content.</p></div><span class="fortress-watermark" aria-hidden="true">F</span></div>
+        <div class="subsection-heading"><h3 data-en="OUR MEMBERS" data-ko="팀원 소개">OUR MEMBERS</h3><span class="long-rule"></span><span>04</span></div>
+        <div class="team-grid">
+          <article class="member"><div class="member-portrait" aria-hidden="true"><span class="member-index">01</span><svg viewBox="0 0 80 100"><circle cx="40" cy="32" r="15"/><path d="M12 90v-8c0-21 56-21 56 0v8"/></svg></div><div class="member-info"><h3 lang="ko">조현우</h3><p data-ko="팀장 (Team Leader)" data-en="Team Leader">Team Leader</p><p data-ko="보스 청룡 개발" data-en="Cheongryong Boss Development">Cheongryong Boss Development</p></div></article>
+          <article class="member"><div class="member-portrait" aria-hidden="true"><span class="member-index">02</span><svg viewBox="0 0 80 100"><circle cx="40" cy="32" r="15"/><path d="M12 90v-8c0-21 56-21 56 0v8"/></svg></div><div class="member-info"><h3 lang="ko">조준환</h3><p data-ko="기획/시나리오" data-en="Game Planning / Scenario">Game Planning / Scenario</p><p data-ko="주인공 진헌 개발" data-en="Jinhun (Protagonist) Development">Jinhun (Protagonist) Development</p></div></article>
+          <article class="member"><div class="member-portrait" aria-hidden="true"><span class="member-index">03</span><svg viewBox="0 0 80 100"><circle cx="40" cy="32" r="15"/><path d="M12 90v-8c0-21 56-21 56 0v8"/></svg></div><div class="member-info"><h3 lang="ko">강민우</h3><p data-ko="보스 우태 개발" data-en="Wootae Boss Development">Wootae Boss Development</p><p data-ko="적 캐릭터 개발" data-en="Enemy Character Development">Enemy Character Development</p></div></article>
+          <article class="member"><div class="member-portrait" aria-hidden="true"><span class="member-index">04</span><svg viewBox="0 0 80 100"><circle cx="40" cy="32" r="15"/><path d="M12 90v-8c0-21 56-21 56 0v8"/></svg></div><div class="member-info"><h3 lang="ko">최윤서</h3><p data-ko="맵 디자인" data-en="Map Design">Map Design</p><p data-ko="적 캐릭터 개발" data-en="Enemy Character Development">Enemy Character Development</p></div></article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><span class="footer-brand">FORTRESS</span><span data-placeholder="FOOTER-001">FOOTER-001: Temporary content.</span><span data-game-title>The Sky Breaker</span></footer>
+  </div>
+
+  <dialog id="trailer-dialog" aria-labelledby="trailer-dialog-title">
+    <div class="dialog-heading"><h2 id="trailer-dialog-title">TRAILER</h2><button type="button" id="close-trailer" data-ko="닫기 ✕" data-en="Close ✕">Close ✕</button></div>
+    <video id="trailer-video" controls playsinline preload="none" poster="assets/key-art.png" hidden></video>
+    <div class="trailer-placeholder" id="trailer-placeholder"><img src="assets/key-art.png" alt=""><p data-placeholder="HOME-004">HOME-004: Temporary content.</p></div>
+  </dialog>
+  <noscript><p class="noscript-notice">SITE-001: Temporary content. / SITE-001: 임시 내용입니다</p></noscript>
+</body>
+</html>
