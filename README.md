@@ -27,7 +27,7 @@ npm run dev
 
 | 팀원 | 한국어 역할 | 영어 역할 |
 |---|---|---|
-| 조현우 | 팀장 (Team Leader), 보스 청룡 개발 | Team Leader, Cheongryong Boss Development |
+| 조현우 | 팀장, 보스 청룡 개발 | Team Leader, Cheongryong Boss Development |
 | 조준환 | 기획/시나리오, 주인공 진헌 개발 | Game Planning / Scenario, Jinhun (Protagonist) Development |
 | 강민우 | 보스 우태 개발, 적 캐릭터 개발 | Wootae Boss Development, Enemy Character Development |
 | 최윤서 | 맵 디자인, 적 캐릭터 개발 | Map Design, Enemy Character Development |
