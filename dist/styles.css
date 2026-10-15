@@ -99,13 +99,14 @@ h2 .placeholder-id { display: block; margin-bottom: 14px; }
 .media-number span { height: 1px; width: 28px; background: #bba17e66; }
 .home-bottom { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 26px; }
 .home-note { color: var(--muted); font-size: 12px; }
-.steam-link { display: flex; align-items: center; gap: 12px; padding: 14px 23px; border: 1px solid #b798676e; background: linear-gradient(110deg,#a27a3c18,#5030520d); position: relative; overflow: hidden; transition: background .3s,border-color .3s; }
+.home-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; width: 412px; max-width: 100%; margin-left: auto; flex-shrink: 0; }
+.steam-link { display: flex; align-items: center; justify-content: center; min-width: 0; height: 58px; gap: 10px; padding: 12px 16px; border: 1px solid #b798676e; background: linear-gradient(110deg,#a27a3c18,#5030520d); position: relative; overflow: hidden; transition: background .3s,border-color .3s; }
 .steam-link::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg,transparent 25%,#e6cfa115 50%,transparent 75%); transform: translateX(-120%); transition: transform .8s; }
 .steam-link:hover { background: #a57c4526; border-color: #d4b986; }
 .steam-link:hover::after { transform: translateX(120%); }
 .steam-link img { width: 30px; height: 30px; object-fit: contain; filter: grayscale(1) brightness(2.7); mix-blend-mode: screen; }
-.steam-wordmark { font: 500 16px var(--font-display); letter-spacing: 2px; }
-.external-arrow { width: 15px; height: 15px; fill: none; stroke: var(--gold); stroke-width: 1.2; margin-left: 20px; }
+.steam-wordmark { font: 500 14px var(--font-display); letter-spacing: 1.2px; white-space: nowrap; }
+.external-arrow { width: 15px; height: 15px; flex-shrink: 0; fill: none; stroke: var(--gold); stroke-width: 1.2; }
 h2 { font: 400 clamp(28px,3.7vw,49px)/1.4 var(--font-display); letter-spacing: -.4px; overflow-wrap: anywhere; }
 html:lang(ko) h2 { font-family: var(--font-ui); font-weight: 300; letter-spacing: -1px; }
 .muted { color: #b69ac7; }
@@ -130,18 +131,18 @@ html:lang(ko) h2 { font-family: var(--font-ui); font-weight: 300; letter-spacing
 .character-image > span { position: absolute; left: 11px; top: 8px; color: #b39773; font: 10px var(--font-display); }
 .character h4 { font-size: 16px; font-weight: 400; margin: 12px 0 8px; overflow-wrap: anywhere; }
 .character p { color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
-.development-intro { padding: 24px 0 37px; max-width: 850px; }
+.development-intro { padding: 24px 0 37px; max-width: 1000px; }
 .development-intro h2 { margin: 25px 0 19px; }
-.development-intro > p { color: var(--muted); font-size: 14px; }
+.development-intro > p { color: var(--muted); font-size: 14px; max-width: 760px; line-height: 1.9; }
 .development-rows { border-top: 1px solid #b19a6859; }
-.development-row { display: grid; grid-template-columns: 54px 32% 1fr; align-items: center; gap: 25px; border-bottom: 1px solid var(--line); padding: 32px 16px; position: relative; transition: background .3s; }
+.development-row { display: grid; grid-template-columns: 36px 25% minmax(0,1fr); align-items: start; gap: 25px; border-bottom: 1px solid var(--line); padding: 34px 16px; position: relative; transition: background .3s; }
 .development-row:hover { background: linear-gradient(90deg,#b3986510,transparent); }
 .row-number { color: var(--gold); font: 20px var(--font-display); }
-.development-category { display: flex; align-items: center; gap: 22px; }
+.development-category { display: flex; align-items: center; gap: 22px; padding-top: 3px; }
 .development-category svg { width: 34px; height: 34px; stroke: #b19bc7; stroke-width: 1; fill: none; flex-shrink: 0; }
-.development-category h3 { font: 400 12px var(--font-display); letter-spacing: 1.4px; }
-.development-row h4 { font-size: 16px; font-weight: 400; overflow-wrap: anywhere; }
-.development-row p { color: var(--muted); font-size: 12px; margin-top: 7px; overflow-wrap: anywhere; }
+.development-category h3 { font: 400 12px/1.7 var(--font-display); letter-spacing: 1.4px; overflow-wrap: anywhere; }
+.development-row h4 { font-size: 17px; font-weight: 550; line-height: 1.6; color: #e8d5b6; overflow-wrap: anywhere; }
+.development-row p { color: #bfb1c5; font-size: 14px; line-height: 1.95; margin-top: 12px; overflow-wrap: anywhere; }
 /* Every text element in the team section uses Pretendard, including English. */
 #panel-fortress, #panel-fortress * { font-family: var(--font-ui); }
 .team-intro { position: relative; isolation: isolate; overflow: hidden; min-height: 237px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; padding: 43px 47px; border: 1px solid #b29a6559; background: radial-gradient(ellipse at 0% 100%,#5e356344,transparent 75%),linear-gradient(110deg,#1c1521d9,#211a14b3); }
@@ -191,116 +192,162 @@ body.is-background *, body.is-background *::before, body.is-background *::after 
 @keyframes slow-orbit { to { transform: rotate(360deg); } }
 @keyframes panel-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes dialog-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-@media (min-width:1500px) { .brand-lockup { height: 246px; } .trailer-frame { aspect-ratio: 2.3; } }
+.youtube-mark { width: 30px; height: 30px; color: var(--gold-bright); flex-shrink: 0; }
+.youtube-mark rect { fill: currentColor; }
+.youtube-mark path { fill: var(--bg); }
+.youtube-link:hover { background: #8f2d3526; border-color: #cd9a83; }
+.member-info strong { color: var(--gold-bright); font-weight: 750; }
+
+@media (min-width:1500px) {
+  .brand-lockup { height: 246px; }
+  .trailer-frame { aspect-ratio: 2.3; }
+}
 @media (max-width:1050px) {
-  .site-shell { padding-inline: 36px; } .main-nav button { font-size: 12px; letter-spacing: 1px; }
-  .team-grid { gap: 10px; } .member-info { padding: 24px 18px 20px; min-height: 310px; }
-  .member-info h3 { font-size: 22px; } .member-info p { font-size: 12px; } .member-github { font-size: 11px; gap: 7px; }
-  .story-layout { gap: 38px; } .story-art { height: 280px; }
-  .team-intro { gap: 35px; padding: 36px; } .development-row { grid-template-columns: 35px 36% 1fr; gap: 17px; }
-  .development-category { gap: 16px; } .development-category h3 { font-size: 11px; }
+  .site-shell { padding-inline: 36px; }
+  .main-nav button { font-size: 12px; letter-spacing: 1px; }
+  .team-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+  .member-info { padding: 26px; min-height: 280px; }
+  .story-layout { gap: 38px; }
+  .story-art { height: 280px; }
+  .team-intro { gap: 35px; padding: 36px; }
+  .development-row { grid-template-columns: 28px 26% minmax(0,1fr); gap: 18px; }
+  .development-category { gap: 16px; }
+  .development-category h3 { font-size: 11px; }
+  .development-row h4 { font-size: 16px; }
 }
 @media (max-width:760px) {
-  .site-shell { padding-inline: 24px; } .topbar { height: 67px; } .header-controls { gap: 16px; }
-  .studio-mark { font-size: 10px; letter-spacing: 2.5px; gap: 8px; } .studio-mark svg { width: 25px; height: 25px; }
-
-  .language-switch { gap: 7px; font-size: 10px; } .language-switch > svg { display: none; }
-  .brand-lockup { height: 201px; } .game-logo { width: 360px; height: 122px; } .game-logo.is-korean { width: 195px; height: 116px; }
-  .brand-orbit { width: 330px; height: 330px; top: -67px; } .brand-subtitle { font-size: 8px; letter-spacing: 5px; }
-  .main-nav button { min-height: 66px; font-size: 10px; letter-spacing: .6px; gap: 7px; }
-  .trailer-frame { aspect-ratio: 1.7; } .trailer-title { font-size: 21px; } .media-number { display: none; }
-  .section-heading { margin-bottom: 20px; } .section-caption { font-size: 10px; } .section-caption .placeholder-id { display: block; margin-bottom: 3px; }
-  .story-layout { grid-template-columns: 1fr; gap: 34px; padding-top: 12px; } .story-art { height: 270px; }
-  .character-grid { gap: 26px; } .character { grid-template-columns: 78px 1fr; gap: 16px; } .character-image { height: 125px; }
-  .character h4 { font-size: 14px; } .character p { font-size: 11px; }
-  .team-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; } .member-info { min-height: 284px; padding: 25px; }
-  .member-info h3 { font-size: 24px; } .member-info p { font-size: 13px; } .member-github { font-size: 12px; }
-  .team-intro { padding: 32px; gap: 25px; } .team-intro h2 { font-size: 42px; letter-spacing: 3px; }
-  .development-category { gap: 13px; } .development-category h3 { font-size: 10px; } .development-row { padding-inline: 0; }
+  .site-shell { padding-inline: 24px; }
+  .topbar { height: 67px; }
+  .studio-mark { font-size: 10px; letter-spacing: 2.5px; gap: 8px; }
+  .studio-mark svg { width: 25px; height: 25px; }
+  .language-switch { gap: 7px; font-size: 11px; }
+  .language-switch > svg { display: none; }
+  .brand-lockup { height: 201px; }
+  .game-logo { width: 360px; height: 122px; }
+  .game-logo.is-korean { width: 195px; height: 116px; }
+  .brand-orbit { width: 330px; height: 330px; top: -67px; }
+  .brand-subtitle { font-size: 8px; letter-spacing: 5px; }
+  .main-nav button { min-height: 66px; font-size: 10px; letter-spacing: .6px; }
+  .trailer-frame { aspect-ratio: 1.7; }
+  .trailer-title { font-size: 21px; }
+  .media-number { display: none; }
+  .section-heading { margin-bottom: 20px; }
+  .section-caption { font-size: 11px; }
+  .section-caption .placeholder-id { display: block; margin-bottom: 3px; }
+  .home-bottom { flex-direction: column; align-items: stretch; gap: 18px; }
+  .story-layout { grid-template-columns: 1fr; gap: 34px; padding-top: 12px; }
+  .story-art { height: 270px; }
+  .character-grid { gap: 26px; }
+  .character { grid-template-columns: 78px 1fr; gap: 16px; }
+  .character-image { height: 125px; }
+  .character h4 { font-size: 15px; }
+  .team-intro { padding: 32px; gap: 25px; }
+  .team-intro h2 { font-size: 42px; letter-spacing: 3px; }
+  .development-row { padding-inline: 0; }
 }
-@media (max-width:500px) {
-  .site-shell { padding-inline: 19px; } .topbar { gap: 10px; } .header-controls { gap: 13px; }
-  .studio-mark { letter-spacing: 2px; font-size: 9px; } .studio-mark svg { width: 23px; height: 23px; }
-  .language-switch { gap: 6px; }
-  .brand-lockup { height: 191px; padding-bottom: 25px; } .game-logo { width: 300px; height: 107px; } .game-logo.is-korean { width: 175px; height: 108px; }
-  .brand-rule { width: 123px; margin-top: 17px; } .brand-orbit { width: 290px; height: 290px; top: -53px; }
-  .main-nav button { min-height: 64px; font-size: 9px; letter-spacing: .3px; }
-  .main-nav button[aria-selected="true"]::after { width: 80%; }
-  .tab-panel { padding: 29px 0 38px; } .section-heading { align-items: flex-start; gap: 10px; }
-  .eyebrow { font-size: 9px; letter-spacing: 1.4px; gap: 8px; } .small-rule { width: 15px; }
-  .section-caption { max-width: 55%; font-size: 9px; line-height: 1.6; } .section-caption .placeholder-id { font-size: 7px; }
-  .trailer-frame { aspect-ratio: 4/4.25; } .trailer-art { object-position: 51% 50%; }
-  .media-label { top: 24px; left: 24px; font-size: 9px; letter-spacing: 2px; }
-  .play-ring { width: 67px; height: 67px; } .play-ring svg { width: 21px; height: 21px; }
-  .trailer-trigger { gap: 24px; } .trailer-button-copy { font-size: 10px; letter-spacing: .3px; }
-  .trailer-button-copy .placeholder-id { display: block; font-size: 8px; margin-bottom: 5px; }
-  .trailer-bottom { bottom: 27px; left: 24px; right: 24px; } .trailer-title { font-size: 19px; }
-  .home-bottom { gap: 14px; align-items: center; padding-top: 22px; } .home-note { font-size: 10px; max-width: 49%; }
-  .home-note .placeholder-id { display: block; font-size: 8px; margin-bottom: 4px; }
-  .steam-link { padding: 12px 16px; gap: 9px; } .steam-link img { width: 25px; height: 25px; } .steam-wordmark { font-size: 12px; }
-  .external-arrow { width: 12px; height: 12px; margin-left: 6px; }
-  h2 { font-size: 31px; } h2 .placeholder-id { font-size: 8px; } .story-copy h2 { margin: 22px 0; }
-  .story-copy p { font-size: 13px; } .story-art { height: 208px; padding: 7px; } .art-index { font-size: 75px; }
-  .subsection-heading { margin: 30px 0 21px; } .subsection-heading h3 { font-size: 10px; letter-spacing: 2px; }
-  .character-grid { grid-template-columns: 1fr; gap: 25px; } .character { grid-template-columns: 86px 1fr; gap: 20px; }
-  .character h4 { font-size: 15px; } .character p { font-size: 12px; }
-  .development-intro { padding-top: 12px; } .development-intro > p { font-size: 13px; }
-  .development-row { grid-template-columns: 25px 1fr; padding-block: 26px; gap: 16px; }
-  .development-row > div:last-child { grid-column: 2; } .development-category svg { width: 28px; height: 28px; }
-  .development-category h3 { font-size: 11px; } .development-row h4 { font-size: 14px; }
-  .team-intro { grid-template-columns: 1fr; padding: 30px 25px; gap: 27px; min-height: 266px; }
-  .team-intro h2 { font-size: 41px; letter-spacing: 3px; margin-top: 17px; } .team-intro-copy p { font-size: 12px; }
+/* Phone layout: readable two-row navigation and a single vertical content flow. */
+@media (max-width:600px) {
+  html { scroll-behavior: auto; }
+  .site-shell { padding-inline: 20px; }
+  .topbar { height: 58px; gap: 10px; }
+  .studio-mark { font-size: 10px; letter-spacing: 2px; }
+  .studio-mark svg { width: 24px; height: 24px; }
+  .header-controls { gap: 0; }
+  .language-switch { gap: 3px; font-size: 12px; }
+  .language-switch button { min-width: 44px; min-height: 44px; padding: 8px 6px; }
+  .brand-lockup { height: 146px; padding: 4px 0 18px; }
+  .game-logo { width: min(310px,80vw); height: 92px; }
+  .game-logo.is-korean { width: 155px; height: 88px; }
+  .brand-subtitle { font-size: 8px; letter-spacing: 4px; margin-top: 3px; }
+  .brand-rule { width: 116px; margin-top: 12px; }
+  .brand-orbit { width: 280px; height: 280px; top: -72px; }
+  .main-nav { position: sticky; top: 0; z-index: 20; background: #100c16f5; backdrop-filter: blur(16px); }
+  .main-nav > [role=tablist] { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .main-nav button { min-height: 52px; font-size: 12px; letter-spacing: 1px; }
+  .main-nav button:nth-child(odd) { border-right: 1px solid var(--line); }
+  .main-nav button:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .main-nav button[aria-selected=true]::after { width: 64%; }
+  main { min-height: 0; scroll-margin-top: 106px; }
+  .tab-panel { padding: 24px 0 36px; }
+  .section-heading { gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+  .eyebrow { font-size: 10px; letter-spacing: 1.4px; gap: 8px; }
+  .section-caption { max-width: 56%; font-size: 11px; line-height: 1.6; }
+  .section-caption .placeholder-id { font-size: 8px; }
+  .trailer-frame { aspect-ratio: 4/3; }
+  .trailer-art { object-position: 51% 50%; }
+  .media-label { top: 18px; left: 20px; font-size: 9px; letter-spacing: 2px; }
+  .play-ring { width: 62px; height: 62px; }
+  .play-ring svg { width: 21px; height: 21px; }
+  .trailer-trigger { gap: 18px; }
+  .trailer-button-copy { font-size: 11px; letter-spacing: .3px; }
+  .trailer-button-copy .placeholder-id { font-size: 8px; margin-right: 5px; }
+  .trailer-bottom { bottom: 20px; left: 20px; right: 20px; }
+  .trailer-title { font-size: 18px; letter-spacing: .4px; }
+  .home-bottom { gap: 16px; padding-top: 20px; }
+  .home-note { font-size: 13px; max-width: none; }
+  .home-note .placeholder-id { font-size: 9px; }
+  .home-links { width: 100%; gap: 10px; }
+  .home-links .steam-link { height: 52px; gap: 9px; padding: 10px 12px; }
+  .steam-wordmark { font-size: 12px; letter-spacing: 1.2px; }
+  .home-links .steam-link img, .youtube-mark { width: 24px; height: 24px; }
+  .home-links .external-arrow { display: none; }
+  h2 { font-size: 30px; line-height: 1.4; }
+  h2 .placeholder-id { font-size: 9px; }
+  .story-layout { gap: 28px; padding-bottom: 30px; }
+  .story-copy h2 { margin: 20px 0; }
+  .story-copy p { font-size: 15px; line-height: 1.85; }
+  .story-art { height: 220px; padding: 7px; }
+  .art-index { font-size: 75px; }
+  .subsection-heading { margin: 30px 0 20px; gap: 16px; }
+  .subsection-heading h3 { font-size: 12px; letter-spacing: 1.5px; }
+  .character-grid { grid-template-columns: 1fr; gap: 24px; }
+  .character { grid-template-columns: 80px minmax(0,1fr); gap: 18px; }
+  .character-image { height: 120px; }
+  .character h4 { font-size: 17px; margin-top: 10px; }
+  .character p { font-size: 14px; line-height: 1.85; }
+  .development-intro { padding: 12px 0 28px; }
+  .development-intro h2 { margin: 18px 0 16px; }
+  .development-intro > p { font-size: 15px; line-height: 1.85; }
+  .development-row { grid-template-columns: 24px minmax(0,1fr); padding-block: 26px; gap: 12px 14px; }
+  .development-category { padding-top: 1px; }
+  .development-category h3 { font-size: 11px; letter-spacing: 1px; }
+  .row-number { font-size: 19px; }
+  .development-row > div:last-child { grid-column: 1/-1; }
+  .development-row h4 { font-size: 17px; line-height: 1.5; }
+  .development-row p { font-size: 15px; line-height: 1.85; margin-top: 12px; }
+  .team-intro { grid-template-columns: 1fr; padding: 28px 24px; gap: 24px; min-height: 0; }
+  .team-intro h2 { font-size: clamp(34px,9vw,44px); letter-spacing: 2px; margin-top: 14px; }
+  .team-intro-copy p { font-size: 15px; line-height: 1.85; }
   .team-intro::after { top: -60px; right: -220px; width: 440px; height: 440px; }
-  .team-grid { gap: 11px; } .member-info { padding: 22px 16px 19px; min-height: 283px; }
-  .member-index { font-size: 10px; margin-bottom: 25px; } .member-info h3 { font-size: 21px; letter-spacing: .3px; margin-bottom: 18px; }
-  .member-info p { font-size: 12px; line-height: 1.8; } .member-github { font-size: 11px; gap: 7px; padding-top: 16px; }
-  .member-github > svg:first-child { width: 14px; height: 14px; } .link-arrow { width: 12px; height: 12px; }
-  .site-footer { flex-wrap: wrap; gap: 12px 20px; padding-block: 24px 30px; font-size: 9px; }
-  .site-footer > span:nth-child(2) { flex-basis: 100%; order: 3; } .site-footer > span:last-child { font-size: 9px; }
-  .dialog-heading { padding: 17px 20px; } .trailer-placeholder p { font-size: 12px; }
+  .team-grid { grid-template-columns: minmax(0,1fr); gap: 16px; }
+  .member-info { min-height: 0; display: grid; grid-template-columns: 26px minmax(0,1fr); column-gap: 14px; padding: 24px; }
+  .member-index { grid-column: 1; grid-row: 1/4; margin: 7px 0 0; font-size: 11px; }
+  .member-info h3, .member-info p { grid-column: 2; }
+  .member-info h3 { font-size: 24px; margin-bottom: 12px; }
+  .member-info p { font-size: 15px; line-height: 1.8; }
+  .member-info p:last-of-type { margin-bottom: 0; }
+  .member-github { grid-column: 1/-1; margin-top: 20px; padding-top: 16px; min-height: 48px; gap: 9px; font-size: 14px; }
+  .member-github > svg:first-child { width: 18px; height: 18px; }
+  .link-arrow { width: 15px; height: 15px; }
+  .site-footer { flex-wrap: wrap; gap: 12px 20px; padding-block: 24px 30px; font-size: 11px; }
+  .site-footer > span:nth-child(2) { flex-basis: 100%; order: 3; }
+  .site-footer > span:last-child { font-size: 10px; }
+  .dialog-heading { padding: 17px 20px; }
+  .dialog-heading button { min-height: 44px; min-width: 44px; }
+  .trailer-placeholder p { font-size: 14px; }
 }
 @media (max-width:360px) {
-  .site-shell { padding-inline: 14px; } .header-controls { gap: 9px; }
-  .language-switch { font-size: 9px; gap: 4px; } .main-nav button { font-size: 8px; letter-spacing: 0; }
-  .team-intro h2 { font-size: 35px; } .member-info { padding-inline: 13px; } .member-github { gap: 5px; font-size: 10px; }
-  .member-github .link-arrow { display: none; } .game-logo { width: 270px; }
+  .site-shell { padding-inline: 16px; }
+  .studio-mark { font-size: 9px; letter-spacing: 1.5px; gap: 7px; }
+  .main-nav button { font-size: 11px; letter-spacing: .6px; }
+  .steam-wordmark { letter-spacing: .6px; }
+  .home-links .steam-link { gap: 7px; padding-inline: 10px; }
+  .member-info { padding: 22px 20px; column-gap: 10px; }
 }
 @media (prefers-reduced-motion:reduce) {
-  html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; }
-  .ambient-mist, .embers { display: none; } .member:hover, .member:focus-within { transform: none; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .ambient-mist, .embers { display: none; }
+  .member:hover, .member:focus-within { transform: none; }
   .trailer-frame:hover .trailer-art { transform: scale(1.015); }
-}
-
-/* Channel links and long-form engineering content. */
-.home-links { display:flex; align-items:center; justify-content:flex-end; gap:12px; flex-shrink:0; }
-.youtube-mark { width:30px; height:30px; color:var(--gold-bright); flex-shrink:0; }
-.youtube-mark rect { fill:currentColor; }
-.youtube-mark path { fill:var(--bg); }
-.youtube-link:hover { background:#8f2d3526; border-color:#cd9a83; }
-.member-info strong { color:var(--gold-bright); font-weight:750; }
-.development-intro { max-width:1000px; }
-.development-intro > p { max-width:760px; line-height:1.9; }
-.development-row { grid-template-columns:36px 25% minmax(0,1fr); align-items:start; gap:25px; padding-block:34px; }
-.development-category { padding-top:3px; }
-.development-category h3 { line-height:1.7; overflow-wrap:anywhere; }
-.development-row h4 { font-weight:550; font-size:17px; line-height:1.6; color:#e8d5b6; }
-.development-row p { font-size:14px; line-height:1.95; color:#bfb1c5; margin-top:12px; }
-@media (max-width:900px) {
-  .development-row { grid-template-columns:28px 26% minmax(0,1fr); gap:18px; }
-  .development-row h4 { font-size:16px; }
-  .development-row p { font-size:13px; }
-  .home-links { gap:10px; }
-}
-@media (max-width:600px) {
-  .home-bottom { flex-direction:column; align-items:stretch; gap:20px; }
-  .home-note { max-width:none; }
-  .home-links { justify-content:flex-end; flex-wrap:wrap; gap:10px; }
-  .home-links .steam-link { padding:11px 12px; gap:8px; }
-  .home-links .external-arrow { display:none; }
-  .youtube-mark { width:25px; height:25px; }
-  .development-row { grid-template-columns:23px minmax(0,1fr); gap:14px; }
-  .development-row > div:last-child { grid-column:2; }
-  .development-category h3 { font-size:10px; }
-  .development-row h4 { font-size:15px; }
-  .development-row p { line-height:1.9; }
 }

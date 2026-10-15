@@ -101,10 +101,20 @@
     if (focus) selected.focus();
   }
 
+  function revealMobilePanel() {
+    if (!window.matchMedia("(max-width: 600px)").matches) return;
+    const main = document.getElementById("main");
+    const nav = document.querySelector(".main-nav");
+    if (main.getBoundingClientRect().top < nav.getBoundingClientRect().bottom) {
+      main.scrollIntoView({ block: "start", behavior: "auto" });
+    }
+  }
+
   tabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
       activateTab(tab.dataset.tab);
       window.location.hash = tab.dataset.tab;
+      revealMobilePanel();
     });
     tab.addEventListener("keydown", (event) => {
       let target;
@@ -116,6 +126,7 @@
       event.preventDefault();
       window.location.hash = tabs[target].dataset.tab;
       activateTab(tabs[target].dataset.tab, true);
+      revealMobilePanel();
     });
   });
   window.addEventListener("hashchange", () => activateTab(location.hash.slice(1)));
