@@ -19,11 +19,11 @@ npm run dev
 ## 화면 구성
 
 - 공통: 중앙 게임 로고, 상단 우측 `EN / 한국어`, 로고 아래 네 개 메뉴.
-- HOME: 예고편 포스터/영상 영역과 우측 하단 Steam 링크.
+- HOME: 예고편 포스터/영상 영역과 우측 하단 Steam·YouTube 채널 링크.
 - GAME: 스토리와 등장 캐릭터 두 개의 임시 영역.
-- DEVELOPMENT: 엔진·협업 툴·게임 내 구현 방식의 세 영역.
+- DEVELOPMENT: UE 5.3.2·렌더링, C++/Blueprint 구조, 보스 AI, 절차적 애니메이션, 공격 판정, Perforce, 개발 검증의 실제 한영 기술 소개 7개 영역.
 - FORTRESS: 가로 팀 소개와 조현우 → 조준환 → 강민우 → 최윤서 순서의 네 칸. 데스크톱 4열, 휴대폰 2열.
-- 본문: 팀원 역할 외 미제공 세부 내용은 한국어 `고유번호: 임시 내용입니다`, 영어 `ID: Temporary content.`. 이름은 요청한 한글 표기를 두 언어에서 유지한다.
+- 본문: 확정된 팀원 역할과 DEVELOPMENT 기술 소개 외 미제공 세부 내용은 한국어 `고유번호: 임시 내용입니다`, 영어 `ID: Temporary content.`. 이름은 요청한 한글 표기를 두 언어에서 유지한다.
 
 | 팀원 | 한국어 역할 | 영어 역할 |
 |---|---|---|
@@ -38,7 +38,9 @@ npm run dev
 
 검정·암보라·청동/금빛·탁한 흰색을 중심으로 천체 궤도 문양, 영화 같은 영상 프레임과 큰 여백을 사용한다. 영문 메뉴/제목 등의 포인트는 Cinzel, FORTRESS 팀 소개 전체는 Pretendard Variable을 사용한다. 폰트와 OFL 라이선스는 `dist/assets/fonts/`에 포함해 외부 폰트 CDN 없이 제공한다.
 
-느린 안개/입자, 메뉴 진입, 카드 광원과 hover 효과를 추가했다. 상단 효과 버튼으로 끌 수 있으며 선택을 저장한다. 기기의 `prefers-reduced-motion`이 켜지면 효과를 비활성화하고, 백그라운드 탭의 반복 움직임은 정지한다. 효과를 꺼도 모든 콘텐츠와 링크는 사용할 수 있다.
+느린 안개/입자, 메뉴 진입, 카드 광원과 hover 효과를 기본으로 활성화한다. 효과 스위치와 과거 `fortress.motion` 저장값 의존성은 제거했다. 기기의 `prefers-reduced-motion` 및 백그라운드 탭 정지는 존중한다. 메뉴와 화면 제목에 중복으로 붙던 01~04는 제거했고, 역할 내 청룡/진헌/우태 및 영문 이름을 굵게 표시한다.
+
+DEVELOPMENT의 기술 설명은 실제 프로젝트 설정과 소스·운영 기록을 확인해 작성했다. Lumen·Virtual Shadow Maps는 렌더러 설정 기준이며, Behavior Tree·Trail Controller·번개 판정 설명은 청룡 구현을 특정한다. 미구현 기능·성능 수치를 추가하지 않았다. 근거와 확인 범위는 최상위 doc/WORKLOG_2026-10-15_FORTRESS_TECH_CONTENT.md에 기록한다.
 
 ## 언어 선택과 국가 판별
 
@@ -73,6 +75,7 @@ node scripts/serve.mjs --port=4174 --country=KR
 | 포스터 | `dist/assets/key-art.png` |
 | 예고편 | `dist/settings.js`의 `trailerSrc`. 승인된 MP4/WebM 파일 경로나 직접 재생 URL을 넣는다. YouTube 페이지 주소는 직접 영상 파일이 아니다. |
 | Steam 링크 | `dist/settings.js`의 `steamUrl` |
+| YouTube 채널 | `dist/settings.js`의 `youtubeUrl` |
 
 **예고편은 미제공 상태**다. 현재 재생 버튼은 임시 안내 모달을 연다. 실제 영상이 재생되는 초안으로 간주하지 않는다. 무관한 게임 내 컷신 파일은 사용하지 않았다. 포스터는 기존 마케팅 이미지다.
 
@@ -87,18 +90,18 @@ dist/                 정적 사이트. 별도 빌드 없음
   styles.css
   app.js              탭, 한영 표시, 모달
   language.js         언어 선택 우선순위
-  settings.js         예고편/Steam 설정
-api/country.js        향후 Vercel에서 사용할 국가 API
+  settings.js         예고편/Steam/YouTube 설정
+api/country.js        Vercel 요청 헤더 기반 국가 API
 scripts/serve.mjs     127.0.0.1 전용 로컬 미리보기
 tests/language.test.mjs
-vercel.json           추후 배포용 정적 경로/API 설정만 준비
+vercel.json           운영 중인 정적 경로/API 배포 설정
 ```
 
 ```powershell
 npm test
 ```
 
-검증 캡처와 상세 결과는 `preview/`에 저장할 수 있으며 Git에서는 제외한다. 실제 국가 헤더·공개 도메인·외부 영상 재생은 향후 배포/콘텐츠 연결 후 별도 검증한다.
+검증 캡처와 상세 결과는 `preview/`에 저장할 수 있으며 Git에서는 제외한다. 배포마다 Git SHA·Vercel READY·운영 주소의 한영 화면을 확인하고 운영 doc에 결과를 기록한다. 다른 국가에서의 실제 접속과 미제공 외부 영상 재생은 별도 검증 대상이다.
 
 ## 에셋 출처
 

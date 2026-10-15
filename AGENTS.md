@@ -21,7 +21,10 @@
 - 팀장 표기는 한국어 화면에서 `팀장`, 영어 화면에서 `Team Leader`로 쓴다. 한국어에 괄호로 영어를 병기하지 않는다.
 - 팀원 역할 아래 GitHub 계정을 조현우 nvunwoo / 조준환 JoJunHwan / 강민우 DrugK / 최윤서 YunseoC 순서로 연결한다.
 - FORTRESS 팀 소개의 모든 텍스트는 Pretendard를 사용한다. 영문 명조 포인트는 팀 소개 바깥에 적용한다.
-- 시각 효과는 수동 끄기와 prefers-reduced-motion을 존중하고 읽기·탭 이동·링크 사용을 방해하지 않는다.
+- 시각 효과 스위치는 두지 않고 기본으로 항상 켠다. 과거 fortress.motion 저장값은 사용하지 않는다. 기기 prefers-reduced-motion 및 백그라운드 정지는 존중한다.
+- 역할 내 청룡/진헌/우태 및 영문 대응 명칭 Cheongryong/Jinhun/Wootae만 strong으로 강조한다.
+- DEVELOPMENT는 실제 프로젝트 설정·구현·운영 기록에 근거한 기술 소개를 한영으로 작성한다. 청룡 전용 기술의 범위를 전체 게임으로 확대하지 않는다. 확인되지 않은 기술과 성능 수치는 넣지 않는다.
 - 나머지 미제공 세부 소개는 고유번호가 있는 임시 문구를 유지한다. 실제 트레일러가 없으면 영상 재생 완료로 보고하지 않는다.
+- HOME의 Steam 옆에 https://www.youtube.com/@Fortress-SMU 채널 링크를 둔다.
 - `dist/`는 정적 사이트이며 `api/country.js`는 Vercel 국가 헤더를 읽는다. 단순한 수정에 프레임워크나 불필요한 의존성을 추가하지 않는다.
 - 작업 계획·중요 결정·검증 결과는 `C:/UnrealEngine/Perforce/doc` 운영 기록에 남긴다.

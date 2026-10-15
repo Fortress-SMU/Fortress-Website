@@ -2,5 +2,6 @@
 // Example: trailerSrc: "assets/trailer.mp4". YouTube page URLs are not video files.
 window.FORTRESS_SETTINGS = Object.freeze({
   trailerSrc: "",
-  steamUrl: "https://store.steampowered.com/app/4838950/"
+  steamUrl: "https://store.steampowered.com/app/4838950/",
+  youtubeUrl: "https://www.youtube.com/@Fortress-SMU"
 });

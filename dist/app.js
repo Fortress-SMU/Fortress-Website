@@ -5,9 +5,8 @@
   const tabs = [...document.querySelectorAll("[data-tab]")];
   const panels = [...document.querySelectorAll("[role=tabpanel]")];
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const motionButton = document.getElementById("motion-toggle");
-  let motionPaused = false;
-  try { motionPaused = localStorage.getItem("fortress.motion") === "off"; } catch { /* Storage is optional. */ }
+  // Effects always start enabled. The operating system can still reduce motion.
+  document.body.dataset.motion = "on";
   let manualChoice;
   try { manualChoice = localStorage.getItem(storageKey); } catch { /* Storage can be disabled. */ }
 
@@ -23,6 +22,15 @@
       node.replaceChildren(id, document.createTextNode(` ${korean ? "임시 내용입니다" : "Temporary content."}`));
     });
     document.querySelectorAll("[data-en][data-ko]").forEach((node) => { node.textContent = node.dataset[language]; });
+    document.querySelectorAll("[data-emphasis-en][data-emphasis-ko]").forEach((node) => {
+      const name = korean ? node.dataset.emphasisKo : node.dataset.emphasisEn;
+      const text = node.textContent;
+      const index = text.indexOf(name);
+      if (index < 0) return;
+      const emphasis = document.createElement("strong");
+      emphasis.textContent = name;
+      node.replaceChildren(document.createTextNode(text.slice(0, index)), emphasis, document.createTextNode(text.slice(index + name.length)));
+    });
     document.querySelectorAll("[data-game-title]").forEach((node) => { node.textContent = title; });
     document.querySelectorAll("[data-language]").forEach((node) => {
       node.setAttribute("aria-pressed", String(node.dataset.language === language));
@@ -33,32 +41,14 @@
     logo.classList.toggle("is-korean", korean);
     document.getElementById("brand-subtitle").hidden = !korean;
     document.getElementById("steam-link").setAttribute("aria-label", korean ? "Steam에서 역천 보기 (새 탭)" : "The Sky Breaker on Steam (opens a new tab)");
+    document.getElementById("youtube-link").setAttribute("aria-label", korean ? "FORTRESS YouTube 채널 (새 탭)" : "FORTRESS on YouTube (opens a new tab)");
     document.getElementById("open-trailer").setAttribute("aria-label", korean ? "트레일러 열기" : "Open trailer");
     document.querySelector(".main-nav").setAttribute("aria-label", korean ? "주 메뉴" : "Main menu");
     document.querySelectorAll(".member-github").forEach((link) => {
       const account = link.querySelector("span").textContent;
       link.setAttribute("aria-label", korean ? `${account} GitHub 프로필 (새 탭)` : `${account} on GitHub (opens a new tab)`);
     });
-    syncMotion();
   }
-
-  function syncMotion() {
-    const paused = motionPaused || motionQuery.matches;
-    const korean = document.documentElement.lang === "ko";
-    document.body.dataset.motion = paused ? "off" : "on";
-    document.getElementById("motion-label").textContent = korean ? `효과 ${paused ? "꺼짐" : "켜짐"}` : `MOTION ${paused ? "OFF" : "ON"}`;
-    motionButton.setAttribute("aria-pressed", String(paused));
-    motionButton.disabled = motionQuery.matches;
-    motionButton.setAttribute("aria-label", motionQuery.matches
-      ? (korean ? "기기의 동작 줄이기 설정 적용 중" : "Reduced motion is enabled on your device")
-      : (korean ? `시각 효과 ${paused ? "켜기" : "끄기"}` : `Turn ${paused ? "on" : "off"} visual effects`));
-  }
-  motionButton.addEventListener("click", () => {
-    motionPaused = !motionPaused;
-    try { localStorage.setItem("fortress.motion", motionPaused ? "off" : "on"); } catch { /* Current visit still works. */ }
-    syncMotion();
-  });
-  motionQuery.addEventListener("change", syncMotion);
   document.addEventListener("visibilitychange", () => document.body.classList.toggle("is-background", document.hidden));
 
   const embers = document.getElementById("embers");
@@ -75,7 +65,7 @@
   document.querySelectorAll(".member").forEach((card) => {
     let frame;
     card.addEventListener("pointermove", (event) => {
-      if (document.body.dataset.motion === "off" || event.pointerType !== "mouse") return;
+      if (motionQuery.matches || event.pointerType !== "mouse") return;
       if (frame) cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const bounds = card.getBoundingClientRect();
@@ -106,7 +96,7 @@
       const wasHidden = panel.hidden;
       panel.hidden = !active;
       if (!active) panel.classList.remove("is-entering");
-      else if (wasHidden && document.body.dataset.motion !== "off") panel.classList.add("is-entering");
+      else if (wasHidden && !motionQuery.matches) panel.classList.add("is-entering");
     });
     if (focus) selected.focus();
   }
@@ -148,6 +138,7 @@
   dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
   dialog.addEventListener("close", () => { video.pause(); });
   document.getElementById("steam-link").href = settings.steamUrl;
+  document.getElementById("youtube-link").href = settings.youtubeUrl;
 
   detectLanguage({
     saved: manualChoice,
