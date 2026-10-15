@@ -155,13 +155,13 @@ html:lang(ko) h2 { font-family: var(--font-ui); font-weight: 300; letter-spacing
 .team-intro-copy p + p { margin-top: 15px; color: #b09eb7; }
 .fortress-watermark { position: absolute; right: 15px; bottom: -95px; font-size: 320px; font-weight: 500; line-height: 1; color: #d5b78208; z-index: -1; transform: rotate(-10deg); }
 .team-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
-.member { position: relative; isolation: isolate; min-width: 0; border: 1px solid #8c715538; background: linear-gradient(140deg,#241a2999,#110d14d9 70%); transition: transform .4s, border-color .4s, box-shadow .4s; }
+.member { position: relative; isolation: isolate; min-width: 0; display: flex; flex-direction: column; border: 1px solid #8c715538; background: linear-gradient(140deg,#241a2999,#110d14d9 70%); transition: transform .4s, border-color .4s, box-shadow .4s; }
 .member:nth-child(even) { background: linear-gradient(140deg,#2b211a66,#110d14d9 70%); }
 .member::before { content: ""; position: absolute; inset: 0; background: radial-gradient(250px circle at var(--light-x,50%) var(--light-y,0%),#bd9bc41c,transparent 70%); opacity: 0; transition: opacity .35s; z-index: -1; }
 .member::after { content: ""; position: absolute; left: 22px; right: 22px; top: -1px; height: 1px; background: linear-gradient(90deg,transparent,#d8b779b3,transparent); }
 .member:hover, .member:focus-within { transform: translateY(-5px); border-color: #b99b6e80; box-shadow: 0 16px 35px #0003; }
 .member:hover::before, .member:focus-within::before { opacity: 1; }
-.member-info { display: flex; flex-direction: column; min-height: 302px; padding: 27px 25px 23px; }
+.member-info { display: flex; flex: 1; flex-direction: column; min-height: 302px; padding: 27px 25px 23px; }
 .member-index { font-size: 11px; letter-spacing: 2px; color: #c1a77e; margin-bottom: 29px; }
 .member-info h3 { font-weight: 550; font-size: 24px; letter-spacing: 1px; margin-bottom: 20px; }
 .member-info p { color: #bbadbf; font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
